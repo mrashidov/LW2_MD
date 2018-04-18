@@ -1,4 +1,4 @@
-package com.example.manatrashidov.lw2;
+package com.example.manatrashidov.lw2.controllers;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,11 +8,11 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.manatrashidov.lw2.R;
+import com.example.manatrashidov.lw2.models.News;
+
 import java.util.ArrayList;
 
-/**
- * Created by Manat Rashidov on 4/13/2018.
- */
 
 public class NewsAdapter extends ArrayAdapter<News> {
     public NewsAdapter(Context context, ArrayList<News> news) {
@@ -26,7 +26,7 @@ public class NewsAdapter extends ArrayAdapter<News> {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_item, parent, false);
         }
         ImageView thumbnail = convertView.findViewById(R.id.thumbnail);
-        thumbnail.setImageResource(news.getImageRes());
+        thumbnail.setImageBitmap(news.getImage());
         TextView headline = convertView.findViewById(R.id.newsHeadline);
         headline.setText(news.getHeadline());
         TextView preview = convertView.findViewById(R.id.newsPreview);

@@ -4,6 +4,10 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
 
+import com.example.manatrashidov.lw2.controllers.NewsAdapter;
+import com.example.manatrashidov.lw2.models.MockData;
+import com.example.manatrashidov.lw2.models.News;
+
 import java.util.ArrayList;
 
 
