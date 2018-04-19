@@ -26,4 +26,6 @@ public class News {
         this.image = image;
         this.article = article;
     }
+
+
 }

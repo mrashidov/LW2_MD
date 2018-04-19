@@ -9,4 +9,8 @@ Cras purus mauris, dictum sed finibus quis, finibus in elit. Lorem ipsum dolor s
 Integer sit amet rhoncus quam. Pellentesque erat sem, maximus eget malesuada eget, euismod quis dui. Proin elementum urna a tortor pulvinar accumsan. Pellentesque vel ex iaculis, efficitur massa et, cursus arcu. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam ultrices congue rhoncus. Fusce ut egestas diam.
 
 Morbi suscipit massa quis orci aliquam, posuere pulvinar sapien lobortis. Cras quam nunc, laoreet convallis ipsum sit amet, facilisis elementum mi. Aenean feugiat quam quis sapien tincidunt facilisis. Integer quis mauris volutpat, blandit dui et, aliquet massa. Nulla efficitur turpis id enim ornare, nec condimentum est luctus. Duis gravida ut purus in ultricies. Proin hendrerit nibh ac posuere faucibus.</string>
+    <string name="internalDigestFileName">digest.bin</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

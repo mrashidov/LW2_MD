@@ -5,11 +5,17 @@
     android:layout_height="match_parent"
     tools:context="com.example.manatrashidov.lw2.NewsList">
 
-    <ListView
-        android:id="@+id/newsListView"
+    <LinearLayout
+        android:id="@+id/mainContainer"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
-    </ListView>
-
+        <fragment
+            android:name="com.example.manatrashidov.lw2.DigestFragment"
+            android:id="@+id/digestFragment"
+            android:tag="DigestFragmentView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
 </android.support.constraint.ConstraintLayout>
