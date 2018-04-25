@@ -13,4 +13,6 @@ Morbi suscipit massa quis orci aliquam, posuere pulvinar sapien lobortis. Cras q
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="comments">Comments</string>
+    <string name="no_comments_yet">No comments yet.</string>
 </resources>

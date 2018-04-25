@@ -2,6 +2,7 @@ package com.example.manatrashidov.lw2;
 
 
 import android.app.Fragment;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -11,7 +12,14 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.manatrashidov.lw2.controllers.NewsAPI;
 import com.example.manatrashidov.lw2.models.News;
+
+import org.json.JSONObject;
+
+import java.net.URL;
+
+import lombok.Getter;
 
 
 /**
@@ -20,14 +28,16 @@ import com.example.manatrashidov.lw2.models.News;
 public class DetailsFragment extends Fragment {
 
 
-    public DetailsFragment() {
-        // Required empty public constructor
-    }
-
     private ImageView mImage;
     private TextView mTitle;
     private TextView mPublished;
     private TextView mText;
+    @Getter
+    private static News mNews;
+
+    public DetailsFragment() {
+        // Required empty public constructor
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -43,12 +53,26 @@ public class DetailsFragment extends Fragment {
         mTitle = (TextView) getActivity().findViewById(R.id.detailsTitle);
         mPublished = (TextView) getActivity().findViewById(R.id.detailsPublished);
         mText = (TextView) getActivity().findViewById(R.id.detailsText);
-        News news = DigestFragment.getMSelectedNews();
-        mImage.setImageBitmap(news.getImage());
-        mTitle.setText(news.getHeadline());
-        mPublished.setText(news.getPublished());
-        mText.setText(news.getArticle());
-        Log.w("WOW", news.getArticle());
+        int newsId = getActivity().getIntent().getExtras().getInt("newsId");
+        try {
+            JSONObject jNews = NewsAPI.getNews(new URL(NewsAPI.host,
+                    String.format("article?newsId=%d", newsId)));
+            mNews = new News(jNews);
+            if (mNews.getImage() != null) {
+                mImage.setImageBitmap(mNews.getImage());
+            }
+            mTitle.setText(mNews.getHeadline());
+            mPublished.setText(mNews.getPublished());
+            mText.setText(mNews.getArticle());
+            CommentsFragment fComments = new CommentsFragment();
+            FragmentTransaction fragmentTransaction = getActivity().
+                    getFragmentManager().
+                    beginTransaction();
+            fragmentTransaction.replace(R.id.commentsPlaceholder, fComments);
+            fragmentTransaction.commit();
+        } catch (Exception ex) {
+            Log.e("error", ex.getMessage());
+        }
 
     }
 }

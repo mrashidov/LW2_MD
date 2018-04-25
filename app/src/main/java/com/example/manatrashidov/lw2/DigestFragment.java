@@ -10,24 +10,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+import com.example.manatrashidov.lw2.controllers.NewsAPI;
 import com.example.manatrashidov.lw2.controllers.NewsAdapter;
-import com.example.manatrashidov.lw2.models.MockData;
 import com.example.manatrashidov.lw2.models.News;
 
+import org.json.JSONObject;
+
+import java.net.URL;
 import java.util.ArrayList;
 
-import lombok.Getter;
-
 public class DigestFragment extends ListFragment {
-    @Getter
-    private static News mSelectedNews;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ArrayList<News> news = new MockData(getContext()).getMockData();
-        NewsAdapter adapter = new NewsAdapter(getContext(), news);
-        setListAdapter(adapter);
+
     }
 
     @Override
@@ -38,13 +35,30 @@ public class DigestFragment extends ListFragment {
     @Override
     public void onListItemClick(ListView l, View v, int position, long id) {
         Intent intent = new Intent(getActivity(), DetailActivity.class);
-        mSelectedNews = (News) getListView().getItemAtPosition(position);
-        Log.w("WOW", "Selected news: " + mSelectedNews.getHeadline());
+        News selectedNews = (News) getListView().getItemAtPosition(position);
+        intent.putExtra("newsId", selectedNews.getId());
         startActivity(intent);
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        try {
+            URL url = new URL("http://192.168.0.48:8080/news/digest");
+            Log.w("info", "Conneting to string" + url.toString());
+            JSONObject digest = NewsAPI.getNews(url);
+            if (digest == null) {
+                Log.e("error", "Digest is broken.");
+            } else {
+                ArrayList<News> news = News.getFromDigest(digest);
+                NewsAdapter adapter = new NewsAdapter(getContext(), news);
+                setListAdapter(adapter);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
+
+
 }

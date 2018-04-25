@@ -7,15 +7,15 @@
 
     <LinearLayout
         android:id="@+id/mainContainer"
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <fragment
-            android:name="com.example.manatrashidov.lw2.DigestFragment"
             android:id="@+id/digestFragment"
-            android:tag="DigestFragmentView"
+            android:name="com.example.manatrashidov.lw2.DigestFragment"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:tag="DigestFragmentView" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

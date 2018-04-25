@@ -4,6 +4,6 @@
     <dimen name="thumbnail_width">100dp</dimen>
     <dimen name="margin">10dp</dimen>
     <dimen name="padding_base">5dp</dimen>
-    <dimen name="h1">35sp</dimen>
+    <dimen name="h1">20sp</dimen>
     <dimen name="p">10sp</dimen>
 </resources>

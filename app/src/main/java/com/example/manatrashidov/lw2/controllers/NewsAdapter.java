@@ -26,7 +26,11 @@ public class NewsAdapter extends ArrayAdapter<News> {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.list_item, parent, false);
         }
         ImageView thumbnail = convertView.findViewById(R.id.thumbnail);
-        thumbnail.setImageBitmap(news.getImage());
+        if (news.getImage() != null) {
+            thumbnail.setImageBitmap(news.getImage());
+        } else {
+            thumbnail.setEnabled(false);
+        }
         TextView headline = convertView.findViewById(R.id.newsHeadline);
         headline.setText(news.getHeadline());
         TextView preview = convertView.findViewById(R.id.newsPreview);

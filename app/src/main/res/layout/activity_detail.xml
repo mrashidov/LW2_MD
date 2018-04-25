@@ -6,8 +6,8 @@
     tools:context="com.example.manatrashidov.lw2.DetailActivity">
 
     <fragment
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:id="@+id/detailsFragment"
         android:name="com.example.manatrashidov.lw2.DetailsFragment"
-        android:id="@+id/detailsFragment" />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </android.support.constraint.ConstraintLayout>
